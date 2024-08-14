@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Messaging Test</title>
+</head>
+<body>
+    <h1>Loading chat one ssssss</h1>
+    <script type='text/javascript'>
+        function initEmbeddedMessaging() {
+            try {
+                console.log('inside func');
+                if (typeof embeddedservice_bootstrap !== 'undefined') {
+                    embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+                 embeddedservice_bootstrap.init(
+				'00DdM000009e2vZ',
+				'aiqube_tech',
+				'https://sad-e-dev-ed.develop.my.site.com/ESWaiqubetech1723128692907',
+				{
+					scrt2URL: 'https://sad-e-dev-ed.develop.my.salesforce-scrt.com'
+				}
+			);
+                } else {
+                    console.error('embeddedservice_bootstrap is not defined.');
+                }
+            } catch (err) {
+                console.error('Error loading Embedded Messaging: ', err);
+            }
+        };
+
+        // Load the external script
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://sad-e-dev-ed.develop.my.site.com/ESWaiqubetech1723128692907/assets/js/bootstrap.min.js';
+            script.onload = initEmbeddedMessaging;
+            script.onerror = function() {
+                console.error('Error loading the external script.');
+            };
+            document.head.appendChild(script);
+        })();
+    </script>
+</body>
+</html>
